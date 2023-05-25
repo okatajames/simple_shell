@@ -28,26 +28,27 @@ char **getenvrtt(info_tracker *info)
 
 int unsetevnrt(info_tracker *info, char *var)
 {
-	lst_tracker *node = info->environt;
 	size_t si = 0;
 	char *ch;
+	lst_tracker *node = info->environt;
+
 
 	if (!node || !var)
 	return (0);
 
-	while (node)
-	{
-		ch = startwith(node->strh, var);
-		if (ch && *ch == '=')
-		{
-			info->changedenvt = node_enddelete(&(info->environt), si);
-			si = 0;
-			node = info->environt;
-			continue;
-		}
-		node = node->next;
-		si++;
-	}
+
+for (node = info->environt; node; node = node->next, si++)
+{
+    ch = startwith(node->strh, var);
+    if (ch && *ch == '=')
+    {
+        info->changedenvt = node_enddelete(&(info->environt), si);
+        si = 0;
+        node = info->environt;
+        continue;
+    }
+}
+
 	return (info->changedenvt);
 }
 

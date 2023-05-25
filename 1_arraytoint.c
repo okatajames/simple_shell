@@ -23,6 +23,7 @@ int mode_interactive(info_tracker *info)
 
 int delmi_ter(char c, char *specif)
 {
+
 	while (*specif)
 	{
 		if (*specif++ == c)

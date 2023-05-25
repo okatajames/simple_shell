@@ -34,47 +34,51 @@ int _shoutexit(info_tracker *info)
 * _shoutchangedir - change the cwd
 * @info: strut with args
 *
-* Return: Always 0
+* Return: Returns 0
 */
 
 
 int _shoutchangedir(info_tracker *info)
 {
-	char *s, *dir, bufferrfer[1024];
 	int retur_valcd;
+	char *c;
+	char bufferrfer[1024];
+	char *fold;
 
-	s = getcwd(bufferrfer, 1024);
-	if (!s)
-	_strhputt("TODO: >>getcwd failure emsg here<<\n");
+	c = getcwd(bufferrfer, 1024);
+	if (!c)
+	_strhputt("TODO: >>printf failed error msg<<\n");
+
 	if (!info->argv[1])
 	{
-		dir = getenvrt(info, "HOME=");
-		if (!dir)
-			chdir((dir = getenvrt(info, "PWD=")) ? dir : "/");
+		fold = getenvrt(info, "HOME=");
+		if (!fold)
+			chdir((fold = getenvrt(info, "PWD=")) ? fold : "/");
 		else
-			retur_valcd = chdir(dir);
+			retur_valcd = chdir(fold);
 	}
 	else if (_comparestrh(info->argv[1], "-") == 0)
 	{
-		if (!getenvrt(info, "OLDPWD="))
+		if (!getenvrt(info, "PLDPRE="))
 		{
-			_strhputt(s);
+			_strhputt(c);
 			charput('\n');
+
 			return (1);
 		}
-		_strhputt(getenvrt(info, "OLDPWD=")), charput('\n');
-		chdir((dir = getenvrt(info, "OLDPWD=")) ? dir : "/");
+		_strhputt(getenvrt(info, "PLDPRE=")), charput('\n');
+		chdir((fold = getenvrt(info, "PLDPRE=")) ? fold : "/");
 	}
 	else
 	retur_valcd = chdir(info->argv[1]);
 	if (retur_valcd == -1)
 	{
-		printferr(info, "can't cd to ");
+		printferr(info, "cannot cd ");
 		_puterr(info->argv[1]), _putcharrherr('\n');
 	}
 	else
 	{
-		setenvrt(info, "OLDPWD", getenvrt(info, "PWD="));
+		setenvrt(info, "PLDPRE", getenvrt(info, "PWD="));
 		setenvrt(info, "PWD", getcwd(bufferrfer, 1024));
 	}
 		return (0);
@@ -85,7 +89,7 @@ int _shoutchangedir(info_tracker *info)
 * _shoutmanhlp - change the cwd
 * @info: strut with args
 *
-* Return: Always 0
+* Return: Returns 0
 */
 
 int _shoutmanhlp(info_tracker *info)
@@ -94,7 +98,7 @@ int _shoutmanhlp(info_tracker *info)
 
 	contro_arr = info->argv;
 
-	_strhputt("help call works. Function not yet implemented \n");
+	_strhputt("Func call working \n");
 	if (0)
 	_strhputt(*contro_arr);
 	return (0);

@@ -92,20 +92,20 @@ lst_tracker *node_endadd(lst_tracker **head, const char *strh, int integ)
 /**
  * strhprintflist - Func that prints only the strh element
  * in lst_tracker linked list
- * @h: ptr head node
+ * @g: ptr head node
  *
  * Return: returns list size
  */
 
-size_t strhprintflist(const lst_tracker *h)
+size_t strhprintflist(const lst_tracker *g)
 {
 	size_t stn = 0;
 
-	while (h)
+	while (g)
 	{
-		_strhputt(h->strh ? h->strh : "(nil)");
+		_strhputt(g->strh ? g->strh : "(nil)");
 		_strhputt("\n");
-		h = h->next;
+		g = g->next;
 		stn++;
 	}
 
@@ -138,6 +138,7 @@ int node_enddelete(lst_tracker **head, unsigned int index)
 		return (1);
 	}
 	node = *head;
+
 
 	while (node)
 	{
@@ -173,13 +174,13 @@ void listlfree(lst_tracker **head_ptr)
 	head = *head_ptr;
 	node = head;
 
-	while (node)
-	{
-		nodenext = node->next;
-		free(node->strh);
-		free(node);
-		node = nodenext;
-	}
+for (node = head; node; node = nodenext)
+{
+    nodenext = node->next;
+    free(node->strh);
+    free(node);
+}
+
 
 	*head_ptr = NULL;
 }

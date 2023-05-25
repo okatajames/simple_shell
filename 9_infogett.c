@@ -8,10 +8,10 @@
 
 void clear_all(info_tracker *info)
 {
-	info->argnull = NULL;
 	info->argv = NULL;
 	info->loca = NULL;
 	info->argc = 0;
+	info->argnull = NULL;
 }
 
 
@@ -41,13 +41,15 @@ void setall(info_tracker *info, char **av)
 		}
 
 		for (e = 0; info->argv && info->argv[e]; e++)
-		;
 		{
-			info->argc = e;
 		}
+
+		info->argc = e;
 		aliasreplacer(info);
 		aliasvarsv(info);
-	}
+}
+
+
 }
 
 
@@ -60,8 +62,8 @@ void setall(info_tracker *info, char **av)
 void freeall(info_tracker *info, int all)
 {
 	freememory(info->argv);
-	info->argv = NULL;
 	info->loca = NULL;
+	info->argv = NULL;
 
 	if (all)
 	{

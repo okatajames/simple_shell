@@ -75,9 +75,9 @@ int histo_write(info_tracker *info)
 
 int histo_read(info_tracker *info)
 {
-	int q, last = 0, countliner = 0;
 	ssize_t descrfile, rdlen, fsize = 0;
 	struct stat st;
+	int q, last = 0, countliner = 0;
 
 	char *bufferr = NULL, *filename = histo_open(info);
 

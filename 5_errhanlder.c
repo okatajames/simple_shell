@@ -15,11 +15,12 @@ void _puterr(char *strh)
 		return;
 	}
 
-	while (strh[k] != '\0')
+	for (k = 0; strh[k] != '\0'; k++)
 	{
 		_putcharrherr(strh[k]);
-		k++;
 	}
+
+
 }
 
 
@@ -32,8 +33,8 @@ void _puterr(char *strh)
 
 int _putcharrherr(char c)
 {
-	static int k;
 	static char bufferr[WRITE_bufferrFER_SIZE];
+	static int k;
 
 	if (c == bufferr_FLUSH || k >= WRITE_bufferrFER_SIZE)
 	{
@@ -59,8 +60,8 @@ int _putcharrherr(char c)
 
 int _putfiled(char c, int filedesc)
 {
-	static int v;
 	static char bufferr[WRITE_bufferrFER_SIZE];
+	static int v;
 
 	if (c == bufferr_FLUSH || v >= WRITE_bufferrFER_SIZE)
 	{

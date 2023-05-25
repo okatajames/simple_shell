@@ -53,17 +53,19 @@ char *_stringhconcat(char *dest, char *src, int n)
 	p = 0;
 	q = 0;
 
-	while (dest[p] != '\0')
+
+	for (p = 0; dest[p] != '\0'; p++)
 	{
-		p++;
+
 	}
 
-	while (src[q] != '\0' && q < n)
+	for (q = 0; src[q] != '\0' && q < n; q++)
 	{
 		dest[p] = src[q];
 		p++;
-		q++;
 	}
+
+
 	if (q < n)
 	{
 		dest[p] = '\0';

@@ -18,51 +18,54 @@ int _shouthist(info_tracker *info)
  * @info: struct param
  * @strh: stringh alias
  *
- * Return: return 1 = success, 0 = error
+ * Return: return 1 = executed, 0 = error
  */
 
 int unset_alias(info_tracker *info, char *strh)
 {
-	char *p, c;
-	int ret;
+	char h;
+	int outtt;
+	char *r;
 
-	p = _stringhchar(strh, '=');
+	r = _stringhchar(strh, '=');
 
-	if (!p)
+	if (!r)
 	{
 		return (1);
 	}
 
-	c = *p;
-	*p = 0;
-	ret = node_enddelete(&(info->alias),
-	node_indexcapt(info->alias, node_starterwith(info->alias, strh, -1)));
-	*p = c;
+	h = *r;
+	*r = 0;
 
-	return (ret);
+	outtt = node_enddelete(&(info->alias),
+	node_indexcapt(info->alias,
+	node_starterwith(info->alias, strh, -1)));
+	*r = h;
+
+	return (outtt);
 }
 
 
 /**
- * set_alias - set the alias to stringh
+ * alset - set the alias to stringh
  * @info: struct param
  * @strh: stringh alias
  *
  * Return: return 1 = success, 0 = error
  */
 
-int set_alias(info_tracker *info, char *strh)
+int alset(info_tracker *info, char *strh)
 {
-	char *p;
+	char *r;
 
-	p = _stringhchar(strh, '=');
+	r = _stringhchar(strh, '=');
 
-	if (!p)
+	if (!r)
 	{
 		return (1);
 	}
 
-	if (!*++p)
+	if (!*++r)
 	{
 		return (unset_alias(info, strh));
 	}
@@ -74,27 +77,29 @@ int set_alias(info_tracker *info, char *strh)
 
 
 /**
- * print_alias - print alias stringh
+ * aliaspr - print alias stringh
  * @node: alias node
  *
  * Return: return 1 = success, 0 = error
  */
 
-int print_alias(lst_tracker *node)
+int aliaspr(lst_tracker *node)
 {
-	char *p = NULL, *a = NULL;
+	char *k = NULL;
+	char *r = NULL;
 
 	if (node)
 	{
-		p = _stringhchar(node->strh, '=');
+		r = _stringhchar(node->strh, '=');
 
-		for (a = node->strh; a <= p; a++)
+		for (k = node->strh; k <= r; k++)
 		{
-			charput(*a);
+			charput(*k);
 		}
 		charput('\'');
-		_strhputt(p + 1);
+		_strhputt(r + 1);
 		_strhputt("'\n");
+
 		return (0);
 	}
 
@@ -112,7 +117,7 @@ int print_alias(lst_tracker *node)
 int _shoutalias(info_tracker *info)
 {
 	int x = 0;
-	char *p = NULL;
+	char *r = NULL;
 	lst_tracker *node = NULL;
 
 	if (info->argc == 1)
@@ -120,24 +125,23 @@ int _shoutalias(info_tracker *info)
 		node = info->alias;
 		while (node)
 		{
-			print_alias(node);
+			aliaspr(node);
 			node = node->next;
 		}
 		return (0);
 	}
 
-	for (x = 1; info->argv[x]; x++)
-	{
-		p = _stringhchar(info->argv[x], '=');
-		if (p)
-		{
-			set_alias(info, info->argv[x]);
-		}
+	x = 1;
+	while (info->argv[x]) {
+		r = _stringhchar(info->argv[x], '=');
+		if (r) {
+			alset(info, info->argv[x]);
 
-		else
-		{
-			print_alias(node_starterwith(info->alias, info->argv[x], '='));
+		} else {
+			aliaspr(node_starterwith(info->alias, info->argv[x], '='));
 		}
+		x++;
 	}
+
 	return (0);
 }

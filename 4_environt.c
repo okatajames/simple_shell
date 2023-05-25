@@ -29,16 +29,15 @@ char *getenvrt(info_tracker *info, const char *name)
 
 	char *p;
 
-	while (node)
+	for (; node != NULL; node = node->next)
 	{
 		p = startwith(node->strh, name);
-		if (p && *p)
-		{
-			return (p);
+		if (p && *p) {
+			return p;
 		}
-		node = node->next;
 	}
-	return (NULL);
+
+		return (NULL);
 }
 
 
@@ -53,7 +52,7 @@ int shoutsetenvrt(info_tracker *info)
 {
 	if (info->argc != 3)
 	{
-		_puterr("Incorrect number of arguements\n");
+		_puterr("Wrong Argument Number\n");
 		return (1);
 	}
 
@@ -79,7 +78,7 @@ int shoutunsetenvrt(info_tracker *info)
 
 	if (info->argc == 1)
 	{
-		_puterr("Too few arguements.\n");
+		_puterr("Few Arguments.\n");
 		return (1);
 	}
 
@@ -101,14 +100,17 @@ int shoutunsetenvrt(info_tracker *info)
 
 int shoutpopuenvrtlist(info_tracker *info)
 {
-	lst_tracker *node = NULL;
-
 	size_t t;
 
-	for (t = 0; environ[t]; t++)
+	lst_tracker *node = NULL;
+
+	t = 0;
+	while (environ[t])
 	{
 		node_endadd(&node, environ[t], 0);
+		t++;
 	}
+
 	info->environt = node;
 	return (0);
 }

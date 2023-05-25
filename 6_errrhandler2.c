@@ -9,8 +9,8 @@
 
 int _errhtointi(char *s)
 {
-	int t = 0;
 	unsigned long int outputt = 0;
+	int t = 0;
 
 	if (*s == '+')
 	{
@@ -69,9 +69,10 @@ void printferr(info_tracker *info, char *estr)
 
 int printf_delim(int input, int filedesc)
 {
-	int (*__putchar)(char) = charput;
-	int l, tracker = 0;
 	unsigned int _abs_, presentval;
+	int (*__putchar)(char) = charput;
+	int q;
+	int tracker = 0;
 
 	if (filedesc == STDERR_FILENO)
 	{
@@ -89,16 +90,16 @@ int printf_delim(int input, int filedesc)
 	}
 	presentval = _abs_;
 
-	l = 1000000000;
-	while (l > 1)
+	q = 1000000000;
+	while (q > 1)
 	{
-		if (_abs_ / l)
+		if (_abs_ / q)
 		{
-			__putchar('0' + presentval / l);
+			__putchar('0' + presentval / q);
 			tracker++;
 		}
-		presentval %= l;
-		l /= 10;
+		presentval %= q;
+		q /= 10;
 	}
 
 	__putchar('0' + presentval);
@@ -108,7 +109,7 @@ int printf_delim(int input, int filedesc)
 
 
 /**
- * num_conv - converts l to t
+ * num_conv - converts q to t
  * @integ: numb handler
  * @base: base handler
  * @flags: flag argnull
@@ -118,11 +119,12 @@ int printf_delim(int input, int filedesc)
 
 char *num_conv(long int integ, int base, int flags)
 {
-	static char *array;
-	static char bufferrfer[50];
 	char sign = 0;
 	char *ptr;
 	unsigned long u = integ;
+	static char *array;
+	static char bufferrfer[50];
+
 
 	if (!(flags & CONV_UNSIGN) && integ < 0)
 	{
@@ -133,10 +135,10 @@ char *num_conv(long int integ, int base, int flags)
 	ptr = &bufferrfer[49];
 	*ptr = '\0';
 
-	do { /* Change this to t while loop*/
-	*--ptr = array[u % base];
-	u /= base;
-	} while (u != 0);
+
+for (; u != 0; u /= base) {
+    *--ptr = array[u % base];
+}
 
 	if (sign)
 	*--ptr = sign;
@@ -153,14 +155,16 @@ char *num_conv(long int integ, int base, int flags)
 
 void comet_rem(char *bufferr)
 {
-	int l;
+	int q;
 
-	for (l = 0; bufferr[l] != '\0'; l++)
-	{
-		if (bufferr[l] == '#' && (!l || bufferr[l - 1] == ' '))
-		{
-			bufferr[l] = '\0';
-			break;
-		}
-	}
+q = 0;
+while (bufferr[q] != '\0') {
+    if (bufferr[q] == '#' && (!q || bufferr[q - 1] == ' ')) {
+        bufferr[q] = '\0';
+        break;
+    }
+    q++;
+}
+
+
 }

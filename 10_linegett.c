@@ -76,12 +76,14 @@ ssize_t captinput(info_tracker *info)
 		p = bufferr + y;
 		chainchecker(info, bufferr, &z, y, lenh);
 
-		while (z < lenh)
+		for (z = 0; z < lenh; z++)
 		{
 			if (chainor(info, bufferr, &z))
-			break;
-			z++;
+			{
+				break;
+			}
 		}
+
 		y = z + 1;
 		if (y >= lenh)
 		{
