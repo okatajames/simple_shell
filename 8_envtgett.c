@@ -99,7 +99,7 @@ int setenvrt(info_tracker *info, char *var, char *value)
 		node = node->next;
 	}
 	node_endadd(&(info->environt), bufferr, 0);
-	/*free(bufferr);*/
+	free(bufferr);
 	info->changedenvt = 1;
 	return (0);
 }
