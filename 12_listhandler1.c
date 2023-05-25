@@ -174,12 +174,12 @@ void listlfree(lst_tracker **head_ptr)
 	head = *head_ptr;
 	node = head;
 
-for (node = head; node; node = nodenext)
-{
-    nodenext = node->next;
-    free(node->strh);
-    free(node);
-}
+	for (node = head; node; node = nodenext)
+	{
+		nodenext = node->next;
+		free(node->strh);
+		free(node);
+	}
 
 
 	*head_ptr = NULL;

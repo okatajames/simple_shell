@@ -37,17 +37,17 @@ int unsetevnrt(info_tracker *info, char *var)
 	return (0);
 
 
-for (node = info->environt; node; node = node->next, si++)
-{
-    ch = startwith(node->strh, var);
-    if (ch && *ch == '=')
-    {
-        info->changedenvt = node_enddelete(&(info->environt), si);
-        si = 0;
-        node = info->environt;
-        continue;
-    }
-}
+	for (node = info->environt; node; node = node->next, si++)
+	{
+		ch = startwith(node->strh, var);
+		if (ch && *ch == '=')
+		{
+			info->changedenvt = node_enddelete(&(info->environt), si);
+			si = 0;
+			node = info->environt;
+			continue;
+		}
+	}
 
 	return (info->changedenvt);
 }

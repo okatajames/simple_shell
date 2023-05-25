@@ -9,9 +9,9 @@ int freebatch(void **ptr)
 {
 for (; ptr && *ptr; ptr++)
 {
-    free(*ptr);
-    *ptr = NULL;
-    return 1;
+free(*ptr);
+*ptr = NULL;
+return (1);
 }
 
 return (0);

@@ -136,13 +136,14 @@ char *num_conv(long int integ, int base, int flags)
 	*ptr = '\0';
 
 
-for (; u != 0; u /= base) {
-    *--ptr = array[u % base];
-}
+	for (; u != 0; u /= base)
+	{
+		*--ptr = array[u % base];
+	}
 
-	if (sign)
-	*--ptr = sign;
-	return (ptr);
+		if (sign)
+		*--ptr = sign;
+		return (ptr);
 }
 
 
@@ -157,14 +158,16 @@ void comet_rem(char *bufferr)
 {
 	int q;
 
-q = 0;
-while (bufferr[q] != '\0') {
-    if (bufferr[q] == '#' && (!q || bufferr[q - 1] == ' ')) {
-        bufferr[q] = '\0';
-        break;
-    }
-    q++;
-}
+	q = 0;
+	while (bufferr[q] != '\0')
+	{
+		if (bufferr[q] == '#' && (!q || bufferr[q - 1] == ' '))
+		{
+			bufferr[q] = '\0';
+			break;
+		}
+		q++;
+	}
 
 
 }

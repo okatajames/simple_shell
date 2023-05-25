@@ -48,7 +48,6 @@ int _shoutchangedir(info_tracker *info)
 	c = getcwd(bufferrfer, 1024);
 	if (!c)
 	_strhputt("TODO: >>printf failed error msg<<\n");
-
 	if (!info->argv[1])
 	{
 		fold = getenvrt(info, "HOME=");
@@ -63,7 +62,6 @@ int _shoutchangedir(info_tracker *info)
 		{
 			_strhputt(c);
 			charput('\n');
-
 			return (1);
 		}
 		_strhputt(getenvrt(info, "PLDPRE=")), charput('\n');

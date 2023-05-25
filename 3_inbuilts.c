@@ -132,12 +132,15 @@ int _shoutalias(info_tracker *info)
 	}
 
 	x = 1;
-	while (info->argv[x]) {
+	while (info->argv[x])
+	{
 		r = _stringhchar(info->argv[x], '=');
-		if (r) {
+		if (r)
+		{
 			alset(info, info->argv[x]);
 
-		} else {
+		} else
+		{
 			aliaspr(node_starterwith(info->alias, info->argv[x], '='));
 		}
 		x++;

@@ -36,7 +36,7 @@ int delmi_ter(char c, char *specif)
 
 
 /**
- * alphaor - check if char == in alphabet
+* alphaor - check if char == in alphabet
  * @c: char check
  *
  * Return: Return 1 fot true, else 0
@@ -88,7 +88,6 @@ int _arrtoint(char *s)
 		}
 		else if (idef == 1)
 			idef = 2;
-
 		z++;
 	}
 

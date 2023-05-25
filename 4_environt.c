@@ -32,8 +32,9 @@ char *getenvrt(info_tracker *info, const char *name)
 	for (; node != NULL; node = node->next)
 	{
 		p = startwith(node->strh, name);
-		if (p && *p) {
-			return p;
+		if (p && *p)
+		{
+			return (p);
 		}
 	}
 

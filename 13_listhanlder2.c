@@ -38,18 +38,18 @@ char **listltostrh(lst_tracker *head)
 a = 0;
 while (node)
 {
-    strh = malloc(_lenstrh(node->strh) + 1);
-    if (!strh)
-    {
-        for (k = 0; k < a; k++)
-            free(strh2[k]);
-        free(strh2);
-        return (NULL);
-    }
-    strh = _copystrh(strh, node->strh);
-    strh2[a] = strh;
-    node = node->next;
-    a++;
+strh = malloc(_lenstrh(node->strh) + 1);
+if (!strh)
+{
+for (k = 0; k < a; k++)
+free(strh2[k]);
+free(strh2);
+return (NULL);
+}
+strh = _copystrh(strh, node->strh);
+strh2[a] = strh;
+node = node->next;
+a++;
 }
 
 	strh2[a] = NULL;
@@ -69,12 +69,12 @@ size_t a = 0;
 
 for (; b; b = b->next)
 {
-    _strhputt(num_conv(b->integ, 10, 0));
-    charput(':');
-    charput(' ');
-    _strhputt(b->strh ? b->strh : "(nil)");
-    _strhputt("\n");
-    a++;
+_strhputt(num_conv(b->integ, 10, 0));
+charput(':');
+charput(' ');
+_strhputt(b->strh ? b->strh : "(nil)");
+_strhputt("\n");
+a++;
 }
 
 return (a);
@@ -95,11 +95,11 @@ char *m = NULL;
 
 for (; node; node = node->next)
 {
-    m = startwith(node->strh, prefix);
-    if (m && ((r == -1) || (*m == r)))
-    {
-        return (node);
-    }
+m = startwith(node->strh, prefix);
+if (m && ((r == -1) || (*m == r)))
+{
+return (node);
+}
 }
 
 
@@ -117,10 +117,10 @@ size_t a = 0;
 
 for (a = 0; head; head = head->next, a++)
 {
-    if (head == node)
-    {
-        return (a);
-    }
+if (head == node)
+{
+return (a);
+}
 }
 
 return (-1);
