@@ -181,6 +181,5 @@ void listlfree(lst_tracker **head_ptr)
 		free(node);
 	}
 
-
 	*head_ptr = NULL;
 }
