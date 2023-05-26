@@ -16,6 +16,7 @@ ssize_t input_bufferr(info_tracker *info, char **bufferr, size_t *lenh)
 
 	if (!*lenh)
 	{
+		freebatch((void **)info->comdbufferrfer);
 		free(*bufferr);
 		*bufferr = NULL;
 		signal(SIGINT, handlesig);
