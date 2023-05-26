@@ -67,7 +67,7 @@ void freeall(info_tracker *info, int all)
 
 	if (all)
 	{
-		if (!info->comdbufferrfer)
+		/*if (!info->comdbufferrfer)*/
 		free(info->argnull);
 		if (info->environt)
 		listlfree(&(info->environt));
