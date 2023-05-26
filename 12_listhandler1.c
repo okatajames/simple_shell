@@ -11,32 +11,32 @@
 
 lst_tracker *node_adder(lst_tracker **head, const char *strh, int integ)
 {
-	lst_tracker *header_nw;
+lst_tracker *header_nw;
 
-	if (!head)
-	return (NULL);
+if (!head)
+return (NULL);
 
-	header_nw = malloc(sizeof(lst_tracker));
+header_nw = malloc(sizeof(lst_tracker));
 
-	if (!header_nw)
-	return (NULL);
+if (!header_nw)
+return (NULL);
 
-	_setmemory((void *)header_nw, 0, sizeof(lst_tracker));
-	header_nw->integ = integ;
+_setmemory((void *)header_nw, 0, sizeof(lst_tracker));
+header_nw->integ = integ;
 
-	if (strh)
-	{
-		header_nw->strh = _duplicstrh(strh);
-		if (!header_nw->strh)
-		{
-			free(header_nw);
-			return (NULL);
-		}
-	}
-	header_nw->next = *head;
-	*head = header_nw;
+if (strh)
+{
+header_nw->strh = _duplicstrh(strh);
+if (!header_nw->strh)
+{
+free(header_nw);
+return (NULL);
+}
+}
+header_nw->next = *head;
+*head = header_nw;
 
-	return (header_nw);
+return (header_nw);
 }
 
 
@@ -51,41 +51,41 @@ lst_tracker *node_adder(lst_tracker **head, const char *strh, int integ)
 
 lst_tracker *node_endadd(lst_tracker **head, const char *strh, int integ)
 {
-	lst_tracker *nodenew, *node;
+lst_tracker *nodenew, *node;
 
-	if (!head)
-	return (NULL);
-	node = *head;
-	nodenew = malloc(sizeof(lst_tracker));
+if (!head)
+return (NULL);
+node = *head;
+nodenew = malloc(sizeof(lst_tracker));
 
-	if (!nodenew)
-	return (NULL);
-	_setmemory((void *)nodenew, 0, sizeof(lst_tracker));
-	nodenew->integ = integ;
+if (!nodenew)
+return (NULL);
+_setmemory((void *)nodenew, 0, sizeof(lst_tracker));
+nodenew->integ = integ;
 
-	if (strh)
-	{
-		nodenew->strh = _duplicstrh(strh);
-		if (!nodenew->strh)
-		{
-			free(nodenew);
-			return (NULL);
-		}
-	}
-	if (node)
-	{
-		for (; node->next; node = node->next)
-		{
-		}
-		node->next = nodenew;
-	}
+if (strh)
+{
+nodenew->strh = _duplicstrh(strh);
+if (!nodenew->strh)
+{
+free(nodenew);
+return (NULL);
+}
+}
+if (node)
+{
+for (; node->next; node = node->next)
+{
+}
+node->next = nodenew;
+}
 
-	else
-	{
-		*head = nodenew;
-	}
+else
+{
+*head = nodenew;
+}
 
-	return (nodenew);
+return (nodenew);
 }
 
 
@@ -99,17 +99,17 @@ lst_tracker *node_endadd(lst_tracker **head, const char *strh, int integ)
 
 size_t strhprintflist(const lst_tracker *g)
 {
-	size_t stn = 0;
+size_t stn = 0;
 
-	while (g)
-	{
-		_strhputt(g->strh ? g->strh : "(nil)");
-		_strhputt("\n");
-		g = g->next;
-		stn++;
-	}
+while (g)
+{
+_strhputt(g->strh ? g->strh : "(nil)");
+_strhputt("\n");
+g = g->next;
+stn++;
+}
 
-	return (stn);
+return (stn);
 }
 
 
@@ -123,37 +123,37 @@ size_t strhprintflist(const lst_tracker *g)
 
 int node_enddelete(lst_tracker **head, unsigned int index)
 {
-	lst_tracker *node, *nodepre;
-	unsigned int stn = 0;
+lst_tracker *node, *nodepre;
+unsigned int stn = 0;
 
-	if (!head || !*head)
-	return (0);
+if (!head || !*head)
+return (0);
 
-	if (!index)
-	{
-		node = *head;
-		*head = (*head)->next;
-		free(node->strh);
-		free(node);
-		return (1);
-	}
-	node = *head;
+if (!index)
+{
+node = *head;
+*head = (*head)->next;
+free(node->strh);
+free(node);
+return (1);
+}
+node = *head;
 
 
-	while (node)
-	{
-		if (stn == index)
-		{
-			nodepre->next = node->next;
-			free(node->strh);
-			free(node);
-			return (1);
-		}
-		stn++;
-		nodepre = node;
-		node = node->next;
-	}
-	return (0);
+while (node)
+{
+if (stn == index)
+{
+nodepre->next = node->next;
+free(node->strh);
+free(node);
+return (1);
+}
+stn++;
+nodepre = node;
+node = node->next;
+}
+return (0);
 }
 
 
@@ -166,20 +166,20 @@ int node_enddelete(lst_tracker **head, unsigned int index)
 
 void listlfree(lst_tracker **head_ptr)
 {
-	lst_tracker *node, *nodenext, *head;
+lst_tracker *node, *nodenext, *head;
 
-	if (!head_ptr || !*head_ptr)
-	return;
+if (!head_ptr || !*head_ptr)
+return;
 
-	head = *head_ptr;
-	node = head;
+head = *head_ptr;
+node = head;
 
-	for (node = head; node; node = nodenext)
-	{
-		nodenext = node->next;
-		free(node->strh);
-		free(node);
-	}
+for (node = head; node; node = nodenext)
+{
+nodenext = node->next;
+free(node->strh);
+free(node);
+}
 
-	*head_ptr = NULL;
+*head_ptr = NULL;
 }

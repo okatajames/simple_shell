@@ -7,13 +7,13 @@
 
 size_t lenlistl(const lst_tracker *b)
 {
-	size_t a = 0;
+size_t a = 0;
 
-	for (; b; b = b->next, a++)
-	{
-	}
+for (; b; b = b->next, a++)
+{
+}
 
-	return (a);
+return (a);
 }
 
 /**
@@ -24,16 +24,16 @@ size_t lenlistl(const lst_tracker *b)
 
 char **listltostrh(lst_tracker *head)
 {
-	lst_tracker *node = head;
-	size_t a = lenlistl(head), k;
-	char *strh;
-	char **strh2;
+lst_tracker *node = head;
+size_t a = lenlistl(head), k;
+char *strh;
+char **strh2;
 
-	if (!head || !a)
-	return (NULL);
-	strh2 = malloc(sizeof(char *) * (a + 1));
-	if (!strh2)
-	return (NULL);
+if (!head || !a)
+return (NULL);
+strh2 = malloc(sizeof(char *) * (a + 1));
+if (!strh2)
+return (NULL);
 
 a = 0;
 while (node)
@@ -52,8 +52,8 @@ node = node->next;
 a++;
 }
 
-	strh2[a] = NULL;
-	return (strh2);
+strh2[a] = NULL;
+return (strh2);
 }
 
 /**
