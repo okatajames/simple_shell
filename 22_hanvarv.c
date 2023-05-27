@@ -126,13 +126,13 @@ return (0);
 }
 /**
  * strhreplacer - strng replacement
- * @old: innitial string address
- * @new: latest string
+ * @former: innitial string address
+ * @current: latest string
  * Return: 1 (replacd), 0 (otherwise)
  */
-int strhreplacer(char **old, char *new)
+int strhreplacer(char **former, char *current)
 {
-free(*old);
-*old = new;
+free(*former);
+*former = current;
 return (1);
 }
