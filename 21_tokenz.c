@@ -9,7 +9,7 @@
 
 char **strinhtoken2(char *strh, char *x)
 {
-int a, k, f, t, numwords = 0;
+int a, k, f, t, countt = 0;
 char **g;
 if (strh == NULL || strh[0] == 0)
 return (NULL);
@@ -17,13 +17,13 @@ if (!x)
 x = " ";
 for (a = 0; strh[a] != '\0'; a++)
 if (!delmi_ter(strh[a], x) && (delmi_ter(strh[a + 1], x) || !strh[a + 1]))
-numwords++;
-if (numwords == 0)
+countt++;
+if (countt == 0)
 return (NULL);
-g = malloc((1 + numwords) *sizeof(char *));
+g = malloc((1 + countt) *sizeof(char *));
 if (!g)
 return (NULL);
-for (a = 0, k = 0; k < numwords; k++)
+for (a = 0, k = 0; k < countt; k++)
 {
 while (delmi_ter(strh[a], x))
 a++;
@@ -53,20 +53,20 @@ return (g);
  */
 char **strinhtoken3(char *strh, char x)
 {
-int a, k, f, t, numwords = 0;
+int a, k, f, t, countt = 0;
 char **g;
 if (strh == NULL || strh[0] == 0)
 return (NULL);
 for (a = 0; strh[a] != '\0'; a++)
 if ((strh[a] != x && strh[a + 1] == x) ||
 (strh[a] != x && !strh[a + 1]) || strh[a + 1] == x)
-numwords++;
-if (numwords == 0)
+countt++;
+if (countt == 0)
 return (NULL);
-g = malloc((1 + numwords) *sizeof(char *));
+g = malloc((1 + countt) *sizeof(char *));
 if (!g)
 return (NULL);
-for (a = 0, k = 0; k < numwords; k++)
+for (a = 0, k = 0; k < countt; k++)
 {
 while (strh[a] == x && strh[a] != x)
 a++;
