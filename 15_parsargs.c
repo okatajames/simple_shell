@@ -19,18 +19,18 @@ return (0);
 }
 /**
  * checkdups - xter duplication
- * @pathstr: string loca
- * @start: index for starting
- * @stop: index for finishing
+ * @varparth: string loca
+ * @beginn: index for starting
+ * @endn: index for finishing
  * Return: fresh bufferrfer's pnter
  */
-char *checkdups(char *pathstr, int start, int stop)
+char *checkdups(char *varparth, int beginn, int endn)
 {
 static char bufferr[1024];
 int a = 0, f = 0;
-for (f = 0, a = start; a < stop; a++)
-if (pathstr[a] != ':')
-bufferr[f++] = pathstr[a];
+for (f = 0, a = beginn; a < endn; a++)
+if (varparth[a] != ':')
+bufferr[f++] = varparth[a];
 bufferr[f] = 0;
 return (bufferr);
 }
@@ -38,16 +38,16 @@ return (bufferr);
 /**
  * pathlookup - identifying string loca
  * @info: struct of information
- * @pathstr: string loca
+ * @varparth: string loca
  * @cmd: command line for search
  * Return: complete commandline loca or null
  */
 
-char *pathlookup(info_tracker *info, char *pathstr, char *cmd)
+char *pathlookup(info_tracker *info, char *varparth, char *cmd)
 {
 int a = 0, curr_pos = 0;
 char *loca;
-if (!pathstr)
+if (!varparth)
 return (NULL);
 if ((_lenstrh(cmd) > 2) && startwith(cmd, "./"))
 {
@@ -56,9 +56,9 @@ return (cmd);
 }
 while (1)
 {
-if (!pathstr[a] || pathstr[a] == ':')
+if (!varparth[a] || varparth[a] == ':')
 {
-loca = checkdups(pathstr, curr_pos, a);
+loca = checkdups(varparth, curr_pos, a);
 if (!*loca)
 _concatstrh(loca, cmd);
 else
@@ -68,7 +68,7 @@ _concatstrh(loca, cmd);
 }
 if (checkcmd(info, loca))
 return (loca);
-if (!pathstr[a])
+if (!varparth[a])
 break;
 curr_pos = a;
 }
