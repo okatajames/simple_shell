@@ -14,17 +14,20 @@ lst_tracker *node_adder(lst_tracker **head, const char *strh, int integ)
 lst_tracker *header_nw;
 
 if (!head)
+{
 return (NULL);
+}
 
 header_nw = malloc(sizeof(lst_tracker));
-
 if (!header_nw)
+{
 return (NULL);
+}
 
 _setmemory((void *)header_nw, 0, sizeof(lst_tracker));
 header_nw->integ = integ;
 
-if (strh)
+while (strh)
 {
 header_nw->strh = _duplicstrh(strh);
 if (!header_nw->strh)
@@ -32,7 +35,9 @@ if (!header_nw->strh)
 free(header_nw);
 return (NULL);
 }
+
 }
+
 header_nw->next = *head;
 *head = header_nw;
 
@@ -138,7 +143,6 @@ free(node);
 return (1);
 }
 node = *head;
-
 
 while (node)
 {
