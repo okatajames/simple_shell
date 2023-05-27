@@ -13,7 +13,7 @@ if (bufferr[k] == '|' && bufferr[k + 1] == '|')
 {
 bufferr[k] = 0;
 k++;
-info->comdbufferrfertype = CMD_OR;
+info->comdbufferrfertype = CMD_CHK;
 }
 else if (bufferr[k] == '&' && bufferr[k + 1] == '&')
 {
@@ -52,7 +52,7 @@ bufferr[a] = 0;
 k = len;
 }
 }
-if (info->comdbufferrfertype == CMD_OR)
+if (info->comdbufferrfertype == CMD_CHK)
 {
 if (!info->status)
 {

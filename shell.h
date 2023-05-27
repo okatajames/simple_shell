@@ -24,7 +24,7 @@
 #define CMD_AND 2
 #define CMD_CHAINER 3
 #define CMD_NORMAL 0
-#define CMD_OR 1
+#define CMD_CHK 1
 
 
 /* Num & Char Converters */
