@@ -1,22 +1,22 @@
 #include "shell.h"
 /**
  * _copystrh - cp string
- * @dest: destntn
- * @src: srce
+ * @orig2: destntn
+ * @orig1: srce
  * Return: destntn pnter
  */
-char *_copystrh(char *dest, char *src)
+char *_copystrh(char *orig2, char *orig1)
 {
 int a = 0;
-if (dest == src || src == 0)
-return (dest);
-while (src[a])
+if (orig2 == orig1 || orig1 == 0)
+return (orig2);
+while (orig1[a])
 {
-dest[a] = src[a];
+orig2[a] = orig1[a];
 a++;
 }
-dest[a] = 0;
-return (dest);
+orig2[a] = 0;
+return (orig2);
 }
 /**
  * _duplicstrh - dplcate string

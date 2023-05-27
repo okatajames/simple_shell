@@ -2,24 +2,24 @@
 
 /**
  * *_stringhcopy - routine that copies a string
- * @dest: the string destination
- * @src: the string source
+ * @orig2: the string destination
+ * @orig1: the string source
  * @n: number of chars to be copied
  *
  * Return: returns stringh in concatenated format
  */
 
-char *_stringhcopy(char *dest, char *src, int n)
+char *_stringhcopy(char *orig2, char *orig1, int n)
 {
 	int p, q;
 
-	char *k = dest;
+	char *k = orig2;
 
 	p = 0;
 
-	while (src[p] != '\0' && p < n - 1)
+	while (orig1[p] != '\0' && p < n - 1)
 	{
-		dest[p] = src[p];
+		orig2[p] = orig1[p];
 		p++;
 	}
 	if (p < n)
@@ -27,7 +27,7 @@ char *_stringhcopy(char *dest, char *src, int n)
 		q = p;
 		while (q < n)
 		{
-			/*dest[q] = '\0'; look into this later */
+			/*orig2[q] = '\0'; look into this later */
 			q++;
 		}
 	}
@@ -37,38 +37,38 @@ char *_stringhcopy(char *dest, char *src, int n)
 
 /**
  **_stringhconcat - routine that concats 2 stringsh
- *@dest: stringh1
- *@src: stringh2
+ *@orig2: stringh1
+ *@orig1: stringh2
  *@n: memory in bytes allcoated to handle this
  *
  *Return: returns concat stringh
  */
 
-char *_stringhconcat(char *dest, char *src, int n)
+char *_stringhconcat(char *orig2, char *orig1, int n)
 {
 	int p, q;
 
-	char *k = dest;
+	char *k = orig2;
 
 	p = 0;
 	q = 0;
 
 
-	for (p = 0; dest[p] != '\0'; p++)
+	for (p = 0; orig2[p] != '\0'; p++)
 	{
 
 	}
 
-	for (q = 0; src[q] != '\0' && q < n; q++)
+	for (q = 0; orig1[q] != '\0' && q < n; q++)
 	{
-		dest[p] = src[q];
+		orig2[p] = orig1[q];
 		p++;
 	}
 
 
 	if (q < n)
 	{
-		dest[p] = '\0';
+		orig2[p] = '\0';
 	}
 	return (k);
 }

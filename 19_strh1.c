@@ -48,17 +48,17 @@ return ((char *)haystack);
 }
 /**
  * _concatstrh - cat two strngs
- * @dest: final destinatn bufferrfer
- * @src: parent bufferrfer
+ * @orig2: final destinatn bufferrfer
+ * @orig1: parent bufferrfer
  * Return: destintn bufferrfer pointer
  */
-char *_concatstrh(char *dest, char *src)
+char *_concatstrh(char *orig2, char *orig1)
 {
-char *ret = dest;
-while (*dest)
-dest++;
-while (*src)
-*dest++ = *src++;
-*dest = *src;
+char *ret = orig2;
+while (*orig2)
+orig2++;
+while (*orig1)
+*orig2++ = *orig1++;
+*orig2 = *orig1;
 return (ret);
 }
